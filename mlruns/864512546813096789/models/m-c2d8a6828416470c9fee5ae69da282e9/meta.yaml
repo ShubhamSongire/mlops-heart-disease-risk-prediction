@@ -1,0 +1,10 @@
+artifact_location: file:///E:/BITS/Sem 3/MLOps (S1-25_AIMLCZG523)/asignments/Submission/mlruns/864512546813096789/models/m-c2d8a6828416470c9fee5ae69da282e9/artifacts
+creation_timestamp: 1767073486541
+experiment_id: '864512546813096789'
+last_updated_timestamp: 1767073490410
+model_id: m-c2d8a6828416470c9fee5ae69da282e9
+model_type: null
+name: model_LogisticRegression
+source_run_id: ae0351d126614ed9829475905ca25311
+status: 2
+status_message: null

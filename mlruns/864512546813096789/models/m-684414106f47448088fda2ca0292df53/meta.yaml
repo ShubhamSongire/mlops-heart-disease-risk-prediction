@@ -1,0 +1,10 @@
+artifact_location: file:///E:/BITS/Sem 3/MLOps (S1-25_AIMLCZG523)/asignments/Submission/mlruns/864512546813096789/models/m-684414106f47448088fda2ca0292df53/artifacts
+creation_timestamp: 1767069478225
+experiment_id: '864512546813096789'
+last_updated_timestamp: 1767069481157
+model_id: m-684414106f47448088fda2ca0292df53
+model_type: null
+name: model_RandomForest
+source_run_id: 151d36b8f11f4f839f21a1a534431826
+status: 2
+status_message: null

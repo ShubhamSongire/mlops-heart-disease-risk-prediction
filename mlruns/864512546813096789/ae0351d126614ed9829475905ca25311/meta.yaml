@@ -1,0 +1,14 @@
+artifact_uri: file:///E:/BITS/Sem 3/MLOps (S1-25_AIMLCZG523)/asignments/Submission/mlruns/864512546813096789/ae0351d126614ed9829475905ca25311/artifacts
+end_time: 1767073490428
+entry_point_name: ''
+experiment_id: '864512546813096789'
+lifecycle_stage: active
+run_id: ae0351d126614ed9829475905ca25311
+run_name: LogisticRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767073484476
+status: 3
+tags: []
+user_id: SBS05

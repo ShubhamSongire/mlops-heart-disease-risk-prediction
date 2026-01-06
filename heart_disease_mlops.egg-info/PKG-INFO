@@ -1,0 +1,111 @@
+Metadata-Version: 2.4
+Name: heart-disease-mlops
+Version: 1.0.0
+Summary: End-to-end MLOps pipeline for heart disease risk prediction
+Author-email: MLOps Team <team@example.com>
+License: MIT
+Keywords: mlops,heart-disease,machine-learning,fastapi,kubernetes
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: scikit-learn
+Requires-Dist: matplotlib
+Requires-Dist: seaborn
+Requires-Dist: mlflow
+Requires-Dist: fastapi
+Requires-Dist: uvicorn[standard]
+Requires-Dist: prometheus-client
+Requires-Dist: joblib
+Requires-Dist: pydantic
+Requires-Dist: requests
+Requires-Dist: ruff
+Requires-Dist: pytest
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+
+uu# Heart Disease MLOps E2E (S1-25_AIMLCZG523)
+
+This project delivers an end-to-end MLOps pipeline: data acquisition, EDA, feature engineering, model training with MLflow experiment tracking, containerized serving API (FastAPI), CI/CD via GitHub Actions, and Kubernetes deployment with basic monitoring.
+
+## Quick Start (Local)
+
+1. Install Python 3.10+ and Git.
+2. Create/activate a virtual environment.
+3. Install requirements:
+
+```
+pip install -r requirements.txt
+```
+
+4. Download dataset:
+
+```
+python scripts/download_data.py
+```
+
+5. Train (fast mode for CI):
+
+```
+python src/models/train.py --fast
+```
+
+6. Run API:
+
+```
+uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+7. Test API:
+
+```
+# PowerShell
+Invoke-RestMethod -Uri http://localhost:8000/health -Method GET
+
+$body = @{ age=63; sex=1; cp=3; trestbps=145; chol=233; fbs=1; restecg=0; thalach=150; exang=0; oldpeak=2.3; slope=0; ca=0; thal=1 } | ConvertTo-Json
+Invoke-RestMethod -Uri http://localhost:8000/predict -Method POST -Body $body -ContentType 'application/json'
+```
+
+## CI/CD
+- GitHub Actions workflow runs linting, unit tests, data download, fast training, and uploads artifacts.
+
+## Docker
+Build and run container locally:
+
+```
+docker build -t heart-api:latest .
+docker run -p 8000:8000 heart-api:latest
+```
+
+## Kubernetes (Minikube/Docker Desktop)
+
+```
+kubectl apply -f k8s/deployment.yaml
+kubectl apply -f k8s/service.yaml
+# Optional if Ingress controller is installed
+kubectl apply -f k8s/ingress.yaml
+```
+
+Access:
+- Service NodePort: http://localhost:30080 (Docker Desktop) or via `minikube service heart-api-service --url`.
+
+## MLflow
+- Local tracking at `mlruns/`. Start UI:
+
+```
+mlflow ui --backend-store-uri mlruns --port 5000
+```
+
+## Structure
+- `scripts/`: data download
+- `src/data/`: preprocessing
+- `src/models/`: training
+- `app/`: serving API
+- `tests/`: unit tests
+- `k8s/`: Kubernetes manifests
+- `.github/workflows/`: CI pipeline
+- `docs/`: report and instructions
+- `screenshots/`: images for report
+
+See docs/report.md for full details.

@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "heart-disease-mlops"
+version = "1.0.0"
+description = "End-to-end MLOps pipeline for heart disease risk prediction"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "MLOps Team", email = "team@example.com"}
+]
+keywords = ["mlops", "heart-disease", "machine-learning", "fastapi", "kubernetes"]
+
+dependencies = [
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "matplotlib",
+    "seaborn",
+    "mlflow",
+    "fastapi",
+    "uvicorn[standard]",
+    "prometheus-client",
+    "joblib",
+    "pydantic",
+    "requests",
+    "ruff",
+    "pytest",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[tool.setuptools]
+packages = ["src", "app", "scripts"]
+
+[tool.setuptools.package-data]
+src = ["data/*.py", "models/*.py"]
+app = ["*.py"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = ["E501"]  # Line too long (handled by formatter)
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
