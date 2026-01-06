@@ -22,7 +22,7 @@ with st.sidebar:
     st.header("⚙️ API Configuration")
     api_url = st.text_input(
         "API Backend URL",
-        value="http://localhost:8000",
+        value="https://heart-api-production.up.railway.app",
         help="Enter the FastAPI backend URL"
     )
     
